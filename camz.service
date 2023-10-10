@@ -1,0 +1,15 @@
+[Unit]
+Description=mjpeg-server
+ConditionPathExists=/home/pi/go/src/camz
+After=network.target
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/home/pi/go/src/camz
+EnvironmentFile=/home/pi/go/src/camz/.env
+ExecStart=/home/pi/go/src/camz/camz
+Restart=on-failure
+RestartSec=10
+[Install]
+WantedBy=multi-user.target
